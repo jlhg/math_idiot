@@ -5,4 +5,6 @@ RSpec.describe User, type: :model do
   it { should validate_length_of(:line_key).is_at_most(200) }
   it { should validate_presence_of(:line_key) }
   it { should validate_uniqueness_of(:line_key) }
+  it { should have_many(:participants).dependent(:destroy) }
+  it { should have_many(:items).dependent(:destroy) }
 end
