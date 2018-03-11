@@ -2,3 +2,6 @@ time_zone: "Taipei"
 cors:
   origins:
     - "*"
+line_bot:
+  channel_secret: ""
+  channel_token: ""
