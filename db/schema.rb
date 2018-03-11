@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311064701) do
+ActiveRecord::Schema.define(version: 20180311070219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.index ["user_id", "name"], name: "index_items_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
 
   create_table "participants", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -29,5 +37,6 @@ ActiveRecord::Schema.define(version: 20180311064701) do
     t.index ["line_key"], name: "index_users_on_line_key", unique: true
   end
 
+  add_foreign_key "items", "users"
   add_foreign_key "participants", "users"
 end
