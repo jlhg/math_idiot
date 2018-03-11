@@ -36,6 +36,17 @@ gem 'config', '1.7.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # rspec-rails is a testing framework for Rails 3.x, 4.x and 5.0.
+  # https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '3.7.2'
+
+  # factory_bot is a fixtures replacement with a straightforward
+  # definition syntax, support for multiple build strategies (saved
+  # instances, unsaved instances, attribute hashes, and stubbed
+  # objects), and support for multiple factories for the same class
+  # (user, admin_user, and so on), including factory inheritance.
+  gem 'factory_bot_rails', '4.8.2'
 end
 
 group :development do
@@ -49,5 +60,13 @@ group :development do
   gem 'pry-rails', '0.3.6'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  # Collection of testing matchers extracted from Shoulda
+  # http://matchers.shoulda.io
+  gem 'shoulda-matchers', '3.1.2'
+
+  # Strategies for cleaning databases in Ruby. Can be used to ensure a
+  # clean state for testing.
+  # https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner', '1.6.1'
+end
